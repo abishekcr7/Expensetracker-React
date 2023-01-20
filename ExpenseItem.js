@@ -3,19 +3,20 @@ import ExpenseDetails from "./ExpenseDetails";
 import "./ExpenseItem.css";
 import "./Expenses.css"
 
+import { useState } from "react";
+
 function ExpenseItem(props) {
-  const clickhandler= () =>{
+  var [price, setAmount] = useState(props.amount)
+  const changeAmount = () =>{
+    setAmount("Rs.100")
     console.log("Clicked")
   }
-  const deleteComp= () =>{
-    console.log("Deleted")
-  }
+
   return (
     <div className="expense-item">
       <ExpenseDate date={props.date}></ExpenseDate>
-      <ExpenseDetails amount={props.amount} location={props.location} title={props.title}></ExpenseDetails>
-      <button onClick={clickhandler}>Change Detail</button>
-      <button onClick={deleteComp}>Delete</button>
+      <ExpenseDetails amount={price} location={props.location} title={props.title}></ExpenseDetails>
+      <button onClick={changeAmount}>Change Amount</button>
     </div>
   );
 }
